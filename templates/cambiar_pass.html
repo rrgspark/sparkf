@@ -1,0 +1,36 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block titulo %}
+    <title>Cambio de contraseña</title>
+{% endblock %}
+
+{% block contenido %}
+    <div class="container formas-div cont-main"  style="width:450px;">
+        <p class="titulo margen_custom" style="text-align:center;">Cambiar Contraseña</p>
+
+        <form action="" method="post" style="text-align:center;">
+            {% csrf_token %}
+            {% for field in form%}
+                <label>{{ field.label}}</label><br>
+                {{field}}<br>
+            {% endfor %}
+            <div class="margen_custom">
+                <button type="submit" class="btn btn-primary">Aceptar</button>
+            </div>
+            <br>
+            <div>
+                {% for field in form %}
+                    {% if field.errors %}
+                    <p class="error_msg"> {{field.errors|striptags}}</p>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <br>
+        </form>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'js/script-cambiar-pass.js' %}"></script>
+{% endblock %}

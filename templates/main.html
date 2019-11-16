@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo %}
+    <title>Principal</title>
+{% endblock %}
+{% block contenido %}
+
+    {% if user.is_authenticated %}
+        <div class='container cont-main formas-div'>
+            <p class="titulo" style="text-align:center;">To Do List</p>
+            <div class="container action-cont">
+                <a href="" onclick="javascript:click_crear()" title="Agregar registro" data-toggle="modal" data-target="#modalRegistro">
+                    <i class="fa fa-plus-circle icono-agregar"></i>
+                </a>
+            </div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th class="lista-descr-h">Descripción</th>
+                        <th class="lista-comp-h">Completado</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in items %}
+                        <tr {% if item.completado %} class="item-done" {% endif %}>
+                            <td>
+                                <a href="" onclick="javascript:click_editar('{{item.descripcion}}',{{item.pk}},'{{item.completado}}'=='True')" title="Editar" data-toggle="modal" data-target="#modalRegistro">
+                                    {{item.descripcion}}
+                                </a>
+                            </td>
+                            <td class="lista-comp-r">
+                                <input onclick="javascript:actualizar_checkbox('{{item.descripcion}}',{{item.pk}})"id="id_compl_lista{{item.pk}}" type="checkbox" class="checkbox-lista" {% if item.completado %} checked {% endif %}>
+                            </td>
+                            <td><a href="javascript:borrar_registro({{item.pk}})" title="Borrar registro" style="color:red;"><i class="fa fa-trash icono-lista"></i></a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <br>
+        </div>
+    {% endif %}
+
+<div class="modal fade" id="modalRegistro" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="titulo-reg">Nueva tarea</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                    <form id="forma-registro">
+                        {% csrf_token %}
+                        <input type="text" name="item_id" hidden id="item_id">
+                        <input type="text" name="descripcion" class="campo_descr" required id="id_descripcion" onblur="validarDescripcion(this);">
+                        <div class="cont_completado">
+                            <label>Completado</label><br>
+                            <input type="checkbox" name="completado" id="id_completado" value=True>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button onclick="tareas()" class="btn btn-primary" id="boton-reg">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+    <script> 
+        var token = '{{csrf_token}}', loggedin = '{{user.is_authenticated}}';
+    </script>
+    <script src="{% static 'js/script-main.js' %}"></script>
+{% endblock %}

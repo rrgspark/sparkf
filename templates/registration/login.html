@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo %}
+<title>Inicio de Sesión</title>
+{% endblock %}
+{% block contenido %}
+
+<div class="login-cont">
+    <div class="container form-cont">
+        <p class="titulo">Inicio de Sesión</p>
+        <form method="post" id="login-form">
+            {% csrf_token %}
+            {% for field in form %}
+                {% if field.name == "username" %}
+                    <div class="div_campos">
+                        <label >Usuario:</label>
+                    </div>
+                {% elif field.name == "password" %}
+                    <div class="div_campos">
+                        <label >Contraseña:</label>
+                    </div>
+                {% endif %}
+                {{ field }}
+            {% endfor %}
+            <br><br>
+            <div >
+                <a href="../registrar" title="Registrar un usuario nuevo">Registrar</a>&nbsp;&nbsp;|&nbsp;&nbsp;<button class="btn_login" type="submit" value="Log In">Log In</button>
+            </div>
+            <br>
+            <div>
+                <a href="../recuperar_pass" style="text-decoration:underline; font-size: 12px;" title="Recuperar Contraseña">Olvidé mi contraseña</a>
+            </div>
+            <br>
+            {% if form.errors %}
+                <p class="error_msg">Usuario o Contraseña inválidos.</p>
+            {% endif %}
+        </form>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'js/script-login.js' %}"></script>
+{% endblock %}

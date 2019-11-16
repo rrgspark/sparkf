@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block titulo %}
+<title>Registrar Usuario</title>
+{% endblock %}
+
+{% block contenido %}
+<div class="container registro-cont">
+    <p class="titulo">Registro de Usuario</p>
+    <form id="forma-registro" action="registrar" method="post" class="registro-form">
+        {% csrf_token %}
+        {% for field in form %}
+            {{ field }}<br>
+        {% endfor %}
+        <button type="submit" value="Aceptar" class="btn_login" id="btn-aceptar-reg">Aceptar</button>
+    </form>
+
+    <div>
+        
+        {% for field in form %}
+            {% if field.errors %}
+            <p class="error_msg"> {{field.errors|striptags}}</p>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'js/script-registro.js' %}"></script>
+{% endblock %}

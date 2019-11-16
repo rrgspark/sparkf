@@ -1,0 +1,207 @@
+html, body {
+    height: 100%;
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    font-family: "Roboto","Lucida Grande","DejaVu Sans","Bitstream Vera Sans",Verdana,Arial,sans-serif;
+    color: black;
+    background: rgb(248, 248, 248);
+}
+.div-bg{
+    position: relative;
+    height: 100%;
+}
+.div-bg:after{
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.5;
+    background-image: url('/static/img/bgunderwater.jpeg');
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    -ms-background-size: cover;
+    -o-background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+.navbar-brand {
+    color: #142E60 !important;
+    padding-top: 0px;
+    padding-bottom: 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.icon-user{
+    font-size: 18px;
+    color: #007bff;
+}
+
+.bg-darkish {
+    background-color: #464e57!important;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.3), 0 2px 10px 0 rgba(0, 0, 0, 1);
+}
+
+/*estilos login*/
+.login-cont{
+    text-align: center;
+}
+
+.titulo{
+    font-size: 22px;
+    color: rgb(90, 128, 185);
+    margin-bottom: 25px;
+    font-weight: bold;
+}
+
+.form-cont{
+    width: 250px;
+    margin-top: 3%;
+    padding: 15px;
+    text-align: center;
+    border-radius: 15px;
+    background-color: rgba(240, 255, 255, 0.808);
+}
+
+.label_login{
+    color: black;
+}
+
+.div_campos{
+    margin: 10px 0 10px 0;
+}
+
+.btn_login {
+    margin-top: 20px;
+    border-radius: 6px;
+    background: rgb(113, 113, 161);
+    border: none;
+    color: white;
+    height: 30px;
+}
+
+.btn_login:hover {
+    background: rgb(50, 50, 143);
+}
+
+button[disabled], html input[disabled]{
+    cursor: default;
+    background-color: gray;
+}
+button[disabled], html input[disabled]:hover {
+    cursor: default;
+    background-color: gray;
+}
+
+.error_msg{
+    margin-top: 10px;
+    color:red;
+    font-weight: bold;
+}
+
+/*estilos registro usuarios*/
+.registro-cont{
+    width: 400px;
+    margin-top: 3%;
+    padding: 15px;
+    text-align: center;
+    border-radius: 15px;
+    background-color: rgba(240, 255, 255, 0.808);
+}
+
+.campo-registro{
+    margin: 5px 0 5px 0;
+}
+
+/*estilos main(to do list)*/
+.cont-main{
+    margin-top: 3%;
+}
+
+.lista-descr-h{
+    width: 80%;
+}
+
+.lista-comp-h,
+.lista-comp-r{
+    text-align: center;
+}
+
+.item-done{
+    background-color: #abcc9d;
+}
+
+.icono-lista{
+    font-size: 20px;
+}
+
+.icono-agregar{
+    font-size: 35px;
+}
+
+.action-cont{
+    margin: 5px 0 10px 0;
+    text-align: right;
+}
+
+.checkbox-lista{
+    cursor: pointer;
+}
+
+.cont_completado{
+    display: inline-block;
+    text-align: center;
+}
+
+.campo_descr{
+    width: 80%;
+}
+
+.modal-header,
+.modal-footer{
+    border-style: none;
+}
+
+
+/*recuperar contraseña*/
+.cont_recuperar{
+    text-align: center;
+}
+
+.margen_custom{
+    margin-top: 20px;
+}
+
+.correo_enviado{
+    font-size: 20px;
+    color: green;
+}
+
+.disabled_email{
+    cursor: default;
+    background-color: rgba(128, 128, 128, 0.274);
+}
+
+/*otros*/
+.invalid-field {
+    border-color: red;
+}
+
+.campo-generico{
+    margin: 10px 0 10px 0;
+    width: 250px;
+}
+
+.formas-div{
+    border-radius: 15px;
+    padding-top:3px;
+    background-color: rgba(240, 255, 255, 0.808);
+}

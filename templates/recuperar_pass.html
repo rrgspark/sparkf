@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo %}
+    <title>Recuperar Contraseña</title>
+{% endblock %}
+
+{% block contenido %}
+    <div class="container formas-div cont-main" style="width:450px;">
+        <p class="titulo margen_custom" style="text-align:center;">Recuperar Contraseña</p>
+        {% if enviado %}
+            <div style="text-align:center;">
+                <p class="correo_enviado">Ha sido enviado un correo para continuar con el cambio de contraseña</p>
+                <br>
+            </div>
+        {% else %}
+            <form id="forma-recuperar-pass" action="recuperar_pass" method="post" style="text-align:center;">
+                {% csrf_token %}
+                {% for field in form%}
+                    <label class="campo-registro">{{ field.label}}</label><br>
+                    {{field}}<br>
+                {% endfor %}
+                <div class="margen_custom">
+                    <button type="submit" class="btn btn-primary" onclick="javascript:spinner()">
+                        <span id="spinner_id" class="spinner-border spinner-border-sm" role="status" aria-hidden="true" hidden></span>
+                        Aceptar
+                    </button>
+                </div>
+                <br>
+                <div>
+                    {% for field in form %}
+                        {% if field.errors %}
+                        <p class="error_msg"> {{field.errors|striptags}}</p>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <br>
+            </form>
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'js/script-recuperar-pass.js' %}"></script>
+{% endblock %}
